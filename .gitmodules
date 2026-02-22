@@ -1,0 +1,69 @@
+[submodule "admin-role-management"]
+	path = admin-role-management
+	url = https://github.com/risa-labs-inc/boss-plugin-admin-role-management.git
+[submodule "bookmarks"]
+	path = bookmarks
+	url = https://github.com/risa-labs-inc/boss-plugin-bookmarks.git
+[submodule "boss-plugin-api"]
+	path = boss-plugin-api
+	url = https://github.com/risa-labs-inc/boss-plugin-api.git
+[submodule "codebase"]
+	path = codebase
+	url = https://github.com/risa-labs-inc/boss-plugin-codebase.git
+[submodule "console"]
+	path = console
+	url = https://github.com/risa-labs-inc/boss-plugin-console.git
+[submodule "downloads"]
+	path = downloads
+	url = https://github.com/risa-labs-inc/boss-plugin-downloads.git
+[submodule "editor-tab"]
+	path = editor-tab
+	url = https://github.com/risa-labs-inc/boss-plugin-editor-tab.git
+[submodule "fluck-browser"]
+	path = fluck-browser
+	url = https://github.com/risa-labs-inc/boss-plugin-fluck-browser.git
+[submodule "fluck-chatgpt"]
+	path = fluck-chatgpt
+	url = https://github.com/risa-labs-inc/boss-plugin-fluck-chatgpt.git
+[submodule "git-log"]
+	path = git-log
+	url = https://github.com/risa-labs-inc/boss-plugin-git-log.git
+[submodule "git-status"]
+	path = git-status
+	url = https://github.com/risa-labs-inc/boss-plugin-git-status.git
+[submodule "llmrpa"]
+	path = llmrpa
+	url = https://github.com/risa-labs-inc/boss-plugin-llmrpa.git
+[submodule "performance"]
+	path = performance
+	url = https://github.com/risa-labs-inc/boss-plugin-performance.git
+[submodule "plugin-manager"]
+	path = plugin-manager
+	url = https://github.com/risa-labs-inc/boss-plugin-plugin-manager.git
+[submodule "role-creation"]
+	path = role-creation
+	url = https://github.com/risa-labs-inc/boss-plugin-role-creation.git
+[submodule "rpaengine"]
+	path = rpaengine
+	url = https://github.com/risa-labs-inc/boss-plugin-rpaengine.git
+[submodule "rparecorder"]
+	path = rparecorder
+	url = https://github.com/risa-labs-inc/boss-plugin-rparecorder.git
+[submodule "run-configurations"]
+	path = run-configurations
+	url = https://github.com/risa-labs-inc/boss-plugin-run-configurations.git
+[submodule "secret-manager"]
+	path = secret-manager
+	url = https://github.com/risa-labs-inc/boss-plugin-secret-manager.git
+[submodule "terminal"]
+	path = terminal
+	url = https://github.com/risa-labs-inc/boss-plugin-terminal.git
+[submodule "terminal-tab"]
+	path = terminal-tab
+	url = https://github.com/risa-labs-inc/boss-plugin-terminal-tab.git
+[submodule "topofmind"]
+	path = topofmind
+	url = https://github.com/risa-labs-inc/boss-plugin-topofmind.git
+[submodule "user-secret-list"]
+	path = user-secret-list
+	url = https://github.com/risa-labs-inc/boss-plugin-user-secret-list.git
