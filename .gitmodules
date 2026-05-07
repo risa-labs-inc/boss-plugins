@@ -67,3 +67,6 @@
 [submodule "user-secret-list"]
 	path = user-secret-list
 	url = https://github.com/risa-labs-inc/boss-plugin-user-secret-list.git
+[submodule "risa-pam-button"]
+	path = risa-pam-button
+	url = https://github.com/risa-labs-inc/boss-plugin-risa-pam-button.git
