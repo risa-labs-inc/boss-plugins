@@ -21,6 +21,7 @@ git submodule update --init --recursive
 | [boss-plugin-api](boss-plugin-api/) | Plugin API |
 | [codebase](codebase/) | Codebase viewer |
 | [console](console/) | Console |
+| [dna-origami](dna-origami/) | DNA-origami design + oxDNA simulation, agentic chat-first UI |
 | [downloads](downloads/) | Downloads manager |
 | [editor-tab](editor-tab/) | Editor tab |
 | [fluck-browser](fluck-browser/) | Fluck browser |
