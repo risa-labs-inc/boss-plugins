@@ -18,6 +18,7 @@ git submodule update --init --recursive
 |--------|-------------|
 | [admin-role-management](admin-role-management/) | Admin role management |
 | [bookmarks](bookmarks/) | Bookmarks |
+| [boss-microkernel-runtime](boss-microkernel-runtime/) | Microkernel runtime (process/gRPC services for plugins) |
 | [boss-plugin-api](boss-plugin-api/) | Plugin API |
 | [codebase](codebase/) | Codebase viewer |
 | [console](console/) | Console |
