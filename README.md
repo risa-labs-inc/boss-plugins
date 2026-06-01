@@ -32,6 +32,7 @@ git submodule update --init --recursive
 | [llmrpa](llmrpa/) | LLM RPA |
 | [performance](performance/) | Performance monitoring |
 | [plugin-manager](plugin-manager/) | Plugin manager |
+| [risa-pam-button](risa-pam-button/) | Opens risalabs.ai when the hFAM Boss physical button (Arduino) is pressed |
 | [role-creation](role-creation/) | Role creation |
 | [rpaengine](rpaengine/) | RPA engine |
 | [rparecorder](rparecorder/) | RPA recorder |
