@@ -76,3 +76,6 @@
 [submodule "boss-microkernel-runtime"]
 	path = boss-microkernel-runtime
 	url = https://github.com/risa-labs-inc/boss-microkernel-runtime.git
+[submodule "analytics"]
+	path = analytics
+	url = https://github.com/risa-labs-inc/boss-plugin-analytics.git
