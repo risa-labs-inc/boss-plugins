@@ -79,3 +79,6 @@
 [submodule "analytics"]
 	path = analytics
 	url = https://github.com/risa-labs-inc/boss-plugin-analytics.git
+[submodule "flow-tab"]
+	path = flow-tab
+	url = https://github.com/risa-labs-inc/boss-plugin-flow-tab.git
