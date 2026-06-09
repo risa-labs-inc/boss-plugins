@@ -17,6 +17,7 @@ git submodule update --init --recursive
 | Plugin | Description |
 |--------|-------------|
 | [admin-role-management](admin-role-management/) | Admin role management |
+| [analytics](analytics/) | Vendor-neutral product analytics pipeline (PostHog backend, pluggable sinks, consent + PII scrubbing) |
 | [bookmarks](bookmarks/) | Bookmarks |
 | [boss-microkernel-runtime](boss-microkernel-runtime/) | Microkernel runtime (process/gRPC services for plugins) |
 | [boss-plugin-api](boss-plugin-api/) | Plugin API |
