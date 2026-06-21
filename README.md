@@ -31,6 +31,7 @@ git submodule update --init --recursive
 | [git-log](git-log/) | Git log viewer |
 | [git-status](git-status/) | Git status |
 | [llmrpa](llmrpa/) | LLM RPA |
+| [med-necessity-copilot](med-necessity-copilot/) | RISA Copilot — NCCN medical-necessity assistant (docked side panel): regimen + NCCN-validated ICD, structured-parameter extraction, per-guideline verdict + requirement card, feedback loop. PHI-scrubbed; keys on-device. |
 | [performance](performance/) | Performance monitoring |
 | [plugin-manager](plugin-manager/) | Plugin manager |
 | [risa-pam-button](risa-pam-button/) | Opens risalabs.ai when the hFAM Boss physical button (Arduino) is pressed |
