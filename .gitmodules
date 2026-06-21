@@ -82,3 +82,6 @@
 [submodule "flow-tab"]
 	path = flow-tab
 	url = https://github.com/risa-labs-inc/boss-plugin-flow-tab.git
+[submodule "nanorx"]
+	path = nanorx
+	url = https://github.com/risa-labs-inc/boss-plugin-nanorx.git
