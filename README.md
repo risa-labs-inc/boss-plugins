@@ -31,6 +31,7 @@ git submodule update --init --recursive
 | [git-log](git-log/) | Git log viewer |
 | [git-status](git-status/) | Git status |
 | [llmrpa](llmrpa/) | LLM RPA |
+| [medical-necessity-team-1](medical-necessity-team-1/) | Two-pass oncology medical-necessity engine: guideline-card hard filter + frontier-LLM verdict with adversarial verifier, co-pilot/autopilot routing, decision-grade simulation, 4-way feedback loop |
 | [performance](performance/) | Performance monitoring |
 | [plugin-manager](plugin-manager/) | Plugin manager |
 | [risa-pam-button](risa-pam-button/) | Opens risalabs.ai when the hFAM Boss physical button (Arduino) is pressed |
