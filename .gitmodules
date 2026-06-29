@@ -85,3 +85,6 @@
 [submodule "nanorx"]
 	path = nanorx
 	url = https://github.com/risa-labs-inc/boss-plugin-nanorx.git
+[submodule "boss-atlas"]
+	path = boss-atlas
+	url = https://github.com/risa-labs-inc/boss-plugin-atlas.git
