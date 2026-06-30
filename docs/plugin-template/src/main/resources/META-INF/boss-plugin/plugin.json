@@ -1,0 +1,14 @@
+{
+  "manifestVersion": 1,
+  "pluginId": "ai.rever.boss.plugin.dynamic.hello",
+  "displayName": "Hello (Dynamic)",
+  "version": "0.1.0",
+  "apiVersion": "1.0.20",
+  "minBossVersion": "8.16.30",
+  "mainClass": "ai.rever.boss.plugin.dynamic.hello.HelloDynamicPlugin",
+  "type": "panel",
+  "description": "A starter BOSS panel plugin",
+  "author": "Your Name",
+  "url": "https://github.com/you/boss-plugin-hello",
+  "panel": { "position": "left_bottom", "priority": 50 }
+}
