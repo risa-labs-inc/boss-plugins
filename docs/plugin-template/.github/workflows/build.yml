@@ -1,0 +1,14 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    uses: risa-labs-inc/BossConsole-Releases/.github/workflows/plugin-release.yml@main
+    with:
+      boss_plugin_api_version: 'latest'
+    secrets:
+      BOSS_STORE_PLUGIN_PUBLISH_KEY: ${{ secrets.BOSS_STORE_PLUGIN_PUBLISH_KEY }}

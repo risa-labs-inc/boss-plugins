@@ -14,6 +14,16 @@ git clone --recurse-submodules https://github.com/risa-labs-inc/boss-plugins.git
 git submodule update --init --recursive
 ```
 
+## Plugin Authoring
+
+New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
+
+- **[Creating a plugin](docs/creating-a-plugin.md)** — repo setup → scaffold → build → local test → release
+- **[Plugin API](docs/plugin-api.md)** — the interfaces you implement and the host services you consume
+- **[Manifest reference](docs/manifest.md)** — every `plugin.json` field
+- **[Themes](docs/themes.md)** · **[Permissions](docs/permissions.md)** · **[Versioning & compatibility](docs/versioning-and-compatibility.md)** · **[CI/CD](docs/ci-cd.md)**
+- **[`docs/plugin-template/`](docs/plugin-template/)** — a build-ready "Hello panel" starter to copy
+
 ## Plugins
 
 | Plugin | Description |
