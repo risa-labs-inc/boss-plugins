@@ -2,6 +2,8 @@
 
 Master repository for all BOSS (Business Operating System Service) plugins, managed as git submodules.
 
+**Building a plugin?** Read the [Plugin Development Guide](PLUGIN_DEVELOPMENT.md) — the exhaustive reference for the `plugin.json` manifest schema, validation and classloading, the `PluginContext` API surface, MCP tools, permissions/RBAC, local development, and the CI/CD release pipeline.
+
 ## Quick Start
 
 ```bash
