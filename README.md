@@ -54,6 +54,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [secret-manager](secret-manager/) | Secret manager |
 | [terminal](terminal/) | Terminal |
 | [terminal-tab](terminal-tab/) | Terminal tab |
+| [tool-sidecar](tool-sidecar/) | Probe installed tools (memory/leaks/logs) and evolve them with AI CLIs (hot reload + PR) |
 | [topofmind](topofmind/) | Top of mind |
 | [user-secret-list](user-secret-list/) | User secret list |
 
