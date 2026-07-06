@@ -91,3 +91,6 @@
 [submodule "tool-sidecar"]
 	path = tool-sidecar
 	url = https://github.com/risa-labs-inc/boss-plugin-tool-sidecar.git
+[submodule "tool-creator"]
+	path = tool-creator
+	url = https://github.com/risa-labs-inc/boss-plugin-tool-creator.git
