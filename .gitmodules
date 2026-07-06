@@ -88,9 +88,9 @@
 [submodule "boss-atlas"]
 	path = boss-atlas
 	url = https://github.com/risa-labs-inc/boss-plugin-atlas.git
-[submodule "tool-sidecar"]
-	path = tool-sidecar
-	url = https://github.com/risa-labs-inc/boss-plugin-tool-sidecar.git
 [submodule "tool-creator"]
 	path = tool-creator
 	url = https://github.com/risa-labs-inc/boss-plugin-tool-creator.git
+[submodule "tool-evolver"]
+	path = tool-evolver
+	url = https://github.com/risa-labs-inc/boss-plugin-tool-evolver.git
