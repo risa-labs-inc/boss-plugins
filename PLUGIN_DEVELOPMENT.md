@@ -157,7 +157,8 @@ blank-but-present values are rejected by `validateManifest` (§4).
 | `loadPriority` | Int | `100` | Lower loads first. Documented bands: 0–10 system, 11–50 core, 51–99 high, 100+ regular. ⚠️ Advisory in practice: the loader sorts the *returned* list but actually loads JARs in filesystem order (`DynamicPluginLoader.kt:382-428`). |
 | `canUnload` | Bool | `true` | `false` → runtime unload refused (`PluginUnloadException`). `uninstallPlugin(force = true)` bypasses it (used by reload/upgrade). |
 | `sharedPackages` | List\<String\> | `[]` | Extra package prefixes forced **parent-first** in the plugin classloader (§5). Normalized to end with `.`. |
-| `minBossVersion` | String | `""` | Minimum host version; blank skips the check. Fail-open: unparseable versions log WARN and allow the load. |
+| `minBossVersion` | String | `""` | Minimum host version; blank skips the check. Fail-open: unparseable versions log WARN and allow the load. Use for **host-implemented** capabilities (`@HostImplemented` types): new providers, member additions to existing API types, Compose bumps. |
+| `minApiVersion` | String | `""` | Minimum boss-plugin-api version (the runtime API layer resolved from the installed api jar); blank skips the check. Fail-open like `minBossVersion`. Use for **SDK-only** additions — brand-new interfaces/types shipped by the api jar alone (the `ConsoleLogsAPI` pattern), which need no host release. Requires host ≥ the platform release that introduced the ApiClassLoader. |
 | `minIpcVersion` | String | `""` | Minimum IPC contract version for out-of-process/microkernel plugins; gates store install/spawn. Blank = legacy (WARN). |
 | `isolationMode` | String | `"in-process"` | `"in-process"` or `"out-of-process"` (microkernel-spawned). |
 
@@ -261,6 +262,10 @@ Collects all errors, then throws `PluginManifestException`:
 3. **minBossVersion** → `PluginBossVersionException` if
    `Version.parse(currentBossVersion) < Version.parse(minBossVersion)`.
    Fail-open on unparseable versions (WARN + allow).
+3b. **minApiVersion** → `PluginApiLevelException` if the installed api-jar
+   version is older than the declared `minApiVersion`. Same fail-open
+   semantics as `minBossVersion`. Turns "class not found" validator noise
+   into an actionable "requires API x.y.z, installed a.b.c" error.
 4. **Binary compatibility** → `PluginBinaryIncompatibilityException`
    (§5, `BinaryCompatibilityValidator`). Plugin is marked DISABLED and
    registered in `PluginCrashRegistry`.
@@ -283,8 +288,40 @@ semver, non-blank `mainClass`/`apiVersion`, and an `https://` `url`.
 
 ## 5. Classloader model
 
-One `PluginClassLoader extends URLClassLoader` per plugin, parent = the host
-app classloader (`PluginClassLoaderManager.kt`).
+One `PluginClassLoader extends URLClassLoader` per plugin, parent = the
+**ApiClassLoader** → host app classloader (`PluginClassLoaderManager.kt`).
+
+**The ApiClassLoader (runtime-updatable API layer)**: at startup the host
+resolves the newest installed `boss-plugin-api` jar (bundled copy or a newer
+one delivered by the system-plugin updater) into a single parent-first
+`URLClassLoader` shared by every plugin classloader, and publishes its
+version as the `boss.api.version` system property (read via
+`BossApiRuntime`). Resolution rules:
+
+- Type compiled into the **host** → host wins (parent-first) — identity with
+  host-side implementations is preserved.
+- Type only in a **newer api jar** → served once from the ApiClassLoader,
+  same `Class` identity for all plugins → cross-plugin `getPluginAPI`
+  interfaces work **without a host release**.
+
+The rule that follows (the one discipline to hold):
+
+- **Brand-new types** (interfaces/objects/data classes) ship via the api jar
+  alone → gate consumers with `minApiVersion`.
+- **Member additions to existing types** the host compiles in do NOT ship via
+  the jar (the host's older copy shadows them) → they remain host-contract
+  changes, gated with `minBossVersion`. Types like this are marked
+  `@HostImplemented`.
+- Never evolve sealed hierarchies or data classes across the boundary
+  (exhaustive `when`/`copy`/`componentN` are binary-fragile) — additive
+  default-body methods and new types only.
+
+Api-jar updates apply **live**: when a newer api plugin installs at runtime,
+the host hot-swaps the API layer — every plugin is unloaded, the
+ApiClassLoader is replaced (old jar handle released), and all plugins reload
+against the new layer. No app restart and no BossConsole release involved.
+Distribution is store/GitHub-releases only (no Maven registry); the host's
+build downloads the pinned release jar for compilation.
 
 **Hybrid delegation** (`PluginClassLoader.loadClass`):
 - Class in a **shared package** → parent-first (host wins).
@@ -323,7 +360,9 @@ under newer JARs.
 removed → classloader closed and GC-watched (`ClassLoaderGCWatcher`).
 Enable/disable cycles re-`register()`/`unregisterAll()` without unloading the
 classloader. System plugins keep their session classloader; true upgrades of
-them take effect on app restart (`ApplicationRestarter`).
+them take effect on app restart (`ApplicationRestarter`) — EXCEPT the
+`boss-plugin-api` plugin, whose runtime upgrade hot-swaps the whole API layer
+(unload-all → swap ApiClassLoader → reload-all) without a restart.
 
 ---
 
