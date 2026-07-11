@@ -770,6 +770,22 @@ caller currently overrides it, so **every push to main is a patch release**).
 Secrets: `BOSS_STORE_PLUGIN_PUBLISH_KEY` (required, `publish`-scoped store
 API key), `SUPABASE_ANON_KEY` (optional; only plugin-manager needs it).
 
+### PR review workflow (Claude Code)
+
+Every plugin also carries `.github/workflows/claude-code-review.yml`, a thin
+caller of the shared `plugin-claude-review.yml` in
+`risa-labs-inc/BossConsole-Releases` (same delegation pattern as the release
+workflow). On every PR (`opened`/`synchronize`) it runs
+`anthropics/claude-code-action@v1`, which reviews the diff against the repo's
+`CLAUDE.md` plus house plugin conventions and comments on the PR.
+
+- Auth: `ANTHROPIC_API_KEY` repo or org secret. When absent, the workflow
+  **skips gracefully** (green check + a notice annotation) — so adding the
+  secret is all it takes to activate reviews.
+- The Claude GitHub App is installed org-wide on `risa-labs-inc`, so the
+  action's commenting token works in every plugin repo.
+- New plugins scaffolded by Tool Creator include this workflow out of the box.
+
 ### What the shared workflow does (in order)
 
 1. Checkout with `GITHUB_TOKEN`.
