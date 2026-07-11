@@ -94,3 +94,6 @@
 [submodule "tool-evolver"]
 	path = tool-evolver
 	url = https://github.com/risa-labs-inc/boss-plugin-tool-evolver.git
+[submodule "jupyter-notebook"]
+	path = jupyter-notebook
+	url = https://github.com/risa-labs-inc/boss-plugin-jupyter-notebook.git
