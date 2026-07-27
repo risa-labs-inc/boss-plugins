@@ -37,6 +37,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [codebase](codebase/) | Codebase viewer |
 | [console](console/) | Console |
 | [dna-origami](dna-origami/) | DNA-origami design + oxDNA simulation, agentic chat-first UI |
+| [docker](docker/) | Local Docker manager — containers, images, volumes, networks, project Dockerfiles/compose, with live logs and service previews |
 | [downloads](downloads/) | Downloads manager |
 | [editor-tab](editor-tab/) | Editor tab |
 | [fluck-browser](fluck-browser/) | Fluck browser |
