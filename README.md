@@ -44,6 +44,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [fluck-chatgpt](fluck-chatgpt/) | Fluck ChatGPT |
 | [git-log](git-log/) | Git log viewer |
 | [git-status](git-status/) | Git status |
+| [kubernetes](kubernetes/) | Kubernetes cluster manager — workloads, pods, services, live logs, supervised port-forwards and inline service previews |
 | [llmrpa](llmrpa/) | LLM RPA |
 | [performance](performance/) | Performance monitoring |
 | [plugin-manager](plugin-manager/) | Plugin manager |

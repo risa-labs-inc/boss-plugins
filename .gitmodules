@@ -100,3 +100,6 @@
 [submodule "docker"]
 	path = docker
 	url = https://github.com/risa-labs-inc/boss-plugin-docker.git
+[submodule "kubernetes"]
+	path = kubernetes
+	url = https://github.com/risa-labs-inc/boss-plugin-kubernetes.git
