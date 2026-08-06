@@ -46,6 +46,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [git-status](git-status/) | Git status |
 | [kubernetes](kubernetes/) | Kubernetes cluster manager — workloads, pods, services, live logs, supervised port-forwards and inline service previews |
 | [llmrpa](llmrpa/) | LLM RPA |
+| [organisation](organisation/) | Organisation membership, roles and discovery; opens the org web pages |
 | [performance](performance/) | Performance monitoring |
 | [plugin-manager](plugin-manager/) | Plugin manager |
 | [risa-pam-button](risa-pam-button/) | Opens risalabs.ai when the hFAM Boss physical button (Arduino) is pressed |
