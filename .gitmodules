@@ -103,3 +103,6 @@
 [submodule "kubernetes"]
 	path = kubernetes
 	url = https://github.com/risa-labs-inc/boss-plugin-kubernetes.git
+[submodule "organisation"]
+	path = organisation
+	url = https://github.com/risa-labs-inc/boss-plugin-organisation.git
