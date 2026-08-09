@@ -1,6 +1,9 @@
 [submodule "admin-role-management"]
 	path = admin-role-management
 	url = https://github.com/risa-labs-inc/boss-plugin-admin-role-management.git
+[submodule "ai-gateway"]
+	path = ai-gateway
+	url = https://github.com/risa-labs-inc/boss-plugin-ai-gateway.git
 [submodule "bookmarks"]
 	path = bookmarks
 	url = https://github.com/risa-labs-inc/boss-plugin-bookmarks.git
