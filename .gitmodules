@@ -109,3 +109,6 @@
 [submodule "organisation"]
 	path = organisation
 	url = https://github.com/risa-labs-inc/boss-plugin-organisation.git
+[submodule "boss-arcade"]
+	path = boss-arcade
+	url = https://github.com/risa-labs-inc/boss-plugin-arcade.git
