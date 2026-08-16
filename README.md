@@ -30,6 +30,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 |--------|-------------|
 | [admin-role-management](admin-role-management/) | Assign roles to users; the people half of RBAC |
 | [analytics](analytics/) | Vendor-neutral product analytics pipeline (PostHog backend, pluggable sinks, consent + PII scrubbing) |
+| [boss-arcade](boss-arcade/) | Quick competitive games with team leaderboards (2048, Wordle, Mirror Dash, Typing Sprint, Sky Stack) |
 | [boss-atlas](boss-atlas/) | Chat with Claude about the adjacent browser page |
 | [bookmarks](bookmarks/) | Bookmarks |
 | [boss-microkernel-runtime](boss-microkernel-runtime/) | Shared runtime for out-of-process plugin child JVMs; not itself a plugin |
