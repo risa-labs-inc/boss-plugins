@@ -35,6 +35,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [boss-plugin-api](boss-plugin-api/) | The SDK every plugin compiles against, and the bundled system plugin that serves it |
 | [codebase](codebase/) | Project file tree: lazy loading, multi-select, context menu, background watcher |
 | [console](console/) | Captured stdout/stderr with source filtering, search and per-plugin attribution |
+| [deepseek-harness](deepseek-harness/) | Runs DeepSeek Harness (dsh) inside BOSS: installs and supervises it, embeds its web UI in a tab, and exposes dsh_* tools to agents |
 | [dna-origami](dna-origami/) | DNA-origami design + oxDNA simulation, agentic chat-first UI |
 | [docker](docker/) | Local Docker manager - containers, images, volumes, networks, project Dockerfiles/compose, with live logs and service previews |
 | [downloads](downloads/) | Active and completed downloads: progress, speed, pause/resume/reveal |
