@@ -109,3 +109,6 @@
 [submodule "organisation"]
 	path = organisation
 	url = https://github.com/risa-labs-inc/boss-plugin-organisation.git
+[submodule "deepseek-harness"]
+	path = deepseek-harness
+	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
