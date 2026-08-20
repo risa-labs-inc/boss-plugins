@@ -88,9 +88,9 @@
 [submodule "nanorx"]
 	path = nanorx
 	url = https://github.com/risa-labs-inc/boss-plugin-nanorx.git
-[submodule "boss-atlas"]
-	path = boss-atlas
-	url = https://github.com/risa-labs-inc/boss-plugin-atlas.git
+[submodule "fluck-agent"]
+	path = fluck-agent
+	url = https://github.com/risa-labs-inc/boss-plugin-fluck-agent.git
 [submodule "tool-creator"]
 	path = tool-creator
 	url = https://github.com/risa-labs-inc/boss-plugin-tool-creator.git

@@ -30,7 +30,6 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 |--------|-------------|
 | [admin-role-management](admin-role-management/) | Assign roles to users; the people half of RBAC |
 | [analytics](analytics/) | Vendor-neutral product analytics pipeline (PostHog backend, pluggable sinks, consent + PII scrubbing) |
-| [boss-atlas](boss-atlas/) | Chat with Claude about the adjacent browser page |
 | [bookmarks](bookmarks/) | Bookmarks |
 | [boss-microkernel-runtime](boss-microkernel-runtime/) | Shared runtime for out-of-process plugin child JVMs; not itself a plugin |
 | [boss-plugin-api](boss-plugin-api/) | The SDK every plugin compiles against, and the bundled system plugin that serves it |
@@ -40,6 +39,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [docker](docker/) | Local Docker manager - containers, images, volumes, networks, project Dockerfiles/compose, with live logs and service previews |
 | [downloads](downloads/) | Active and completed downloads: progress, speed, pause/resume/reveal |
 | [editor-tab](editor-tab/) | Editor tab |
+| [fluck-agent](fluck-agent/) | Fluck Agent - chat with Claude about the adjacent browser page |
 | [fluck-browser](fluck-browser/) | Fluck browser |
 | [fluck-chatgpt](fluck-chatgpt/) | chatgpt.com in a sidebar panel, with a navigation toolbar |
 | [git-log](git-log/) | Commit history with cherry-pick, revert and checkout |
