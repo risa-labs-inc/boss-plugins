@@ -55,12 +55,12 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [rpaengine](rpaengine/) | Replay recorded browser workflows against a live tab |
 | [rparecorder](rparecorder/) | Record browser interactions into replayable workflows |
 | [run-configurations](run-configurations/) | Auto-detected ways to run the open project, grouped by language |
-| [secret-manager](secret-manager/) | Encrypted credentials, Plugin Store API keys, and all AI provider settings |
+| [secret-manager](secret-manager/) | Encrypted credentials, secrets shared with you, Plugin Store API keys, and all AI provider settings |
 | [terminal](terminal/) | Sidebar panel that embeds the terminal-tab plugin's terminal |
 | [terminal-tab](terminal-tab/) | Terminal tab |
 | [tool-evolver](tool-evolver/) | Evolve installed tools with AI CLIs (hot reload + PR); probe memory/leaks/logs |
 | [topofmind](topofmind/) | Every open tab across all workspaces, as a split-aware tree |
-| [user-secret-list](user-secret-list/) | My Secrets: read-only view of owned and shared-with-you secrets |
+| [user-secret-list](user-secret-list/) | **Retired** - folded into secret-manager's "Shared with me" section; ships a notice panel only |
 
 ## Working with Submodules
 
