@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "screenshot-share"]
+	path = screenshot-share
+	url = https://github.com/risa-labs-inc/boss-plugin-screenshot-share.git
