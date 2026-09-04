@@ -34,6 +34,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [boss-microkernel-runtime](boss-microkernel-runtime/) | Shared runtime for out-of-process plugin child JVMs; not itself a plugin |
 | [boss-plugin-api](boss-plugin-api/) | The SDK every plugin compiles against, and the bundled system plugin that serves it |
 | [codebase](codebase/) | Project file tree: lazy loading, multi-select, context menu, background watcher |
+| [db-browser](db-browser/) | Visual database browser and SQL query editor with MCP tools (db_connect, db_list_tables, db_query, db_execute) and fine-grained RBAC (db.read / db.write, write off by default) |
 | [console](console/) | Captured stdout/stderr with source filtering, search and per-plugin attribution |
 | [deepseek-harness](deepseek-harness/) | Runs DeepSeek Harness (dsh) inside BOSS: installs and supervises it, embeds its web UI in a tab, and exposes dsh_* tools to agents |
 | [dna-origami](dna-origami/) | DNA-origami design + oxDNA simulation, agentic chat-first UI |
