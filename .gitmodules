@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "agent-warden"]
+	path = agent-warden
+	url = https://github.com/Devx228/boss-plugin-agent-warden.git

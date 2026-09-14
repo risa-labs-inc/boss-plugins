@@ -29,6 +29,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | Plugin | Description |
 |--------|-------------|
 | [admin-role-management](admin-role-management/) | Assign roles to users; the people half of RBAC |
+| [agent-warden](agent-warden/) | Approval and audit layer for the MCP tools an agent can call: classifies each call by blast radius, escalates the high-risk ones to the operator, and exports a session report |
 | [analytics](analytics/) | Vendor-neutral product analytics pipeline (PostHog backend, pluggable sinks, consent + PII scrubbing) |
 | [bookmarks](bookmarks/) | Bookmarks |
 | [boss-microkernel-runtime](boss-microkernel-runtime/) | Shared runtime for out-of-process plugin child JVMs; not itself a plugin |
