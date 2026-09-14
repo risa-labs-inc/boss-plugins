@@ -30,6 +30,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 |--------|-------------|
 | [admin-role-management](admin-role-management/) | Assign roles to users; the people half of RBAC |
 | [analytics](analytics/) | Vendor-neutral product analytics pipeline (PostHog backend, pluggable sinks, consent + PII scrubbing) |
+| [blackout](blackout/) | Co-op escape room where a human and an AI companion restore power, crack a cipher and open the door before the air runs out |
 | [bookmarks](bookmarks/) | Bookmarks |
 | [boss-microkernel-runtime](boss-microkernel-runtime/) | Shared runtime for out-of-process plugin child JVMs; not itself a plugin |
 | [boss-plugin-api](boss-plugin-api/) | The SDK every plugin compiles against, and the bundled system plugin that serves it |
