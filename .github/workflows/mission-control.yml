@@ -1,0 +1,54 @@
+name: Mission Control validation
+on:
+  pull_request:
+    paths:
+      - mission-control
+      - .gitmodules
+      - .github/workflows/mission-control.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check out pinned Mission Control source
+        run: git submodule update --init mission-control
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Download pinned public API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p mission-control/build/downloaded-deps
+          gh release download v1.0.89 --repo risa-labs-inc/boss-plugin-api \
+            --pattern boss-plugin-api-1.0.89.jar \
+            --output mission-control/build/downloaded-deps/boss-plugin-api.jar
+          echo '4b0054ff8cb062354504d041a747e05009483da00a9c84dc5a0355afedd708ca  mission-control/build/downloaded-deps/boss-plugin-api.jar' | sha256sum --check
+      - name: Build and test
+        working-directory: mission-control
+        env:
+          CI: 'true'
+        run: bash ./gradlew build --no-daemon
+      - name: Verify packaged host manifest
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, zipfile
+          jars = list(pathlib.Path('mission-control/build/libs').glob('mission-control-*.jar'))
+          assert len(jars) == 1, jars
+          with zipfile.ZipFile(jars[0]) as jar:
+              path = 'META-INF/boss-plugin/plugin.json'
+              assert jar.namelist().count(path) == 1
+              manifest = json.loads(jar.read(path))
+              assert manifest['pluginId'] == 'ai.rever.boss.plugin.dynamic.missioncontrol'
+              assert manifest['displayName'] == 'Mission Control'
+              assert manifest['apiVersion'] == '1.0.89'
+              assert manifest['version'] == '0.1.0'
+              assert not any(name.startswith('ai/rever/boss/plugin/api/') for name in jar.namelist())
+          PY
