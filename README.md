@@ -6,6 +6,18 @@ Master repository for all BOSS (Business Operating System Service) plugins, mana
 
 ## Quick Start
 
+Recursive cloning requires GitHub authentication and access to any private plugin
+repositories, including `risa-labs-inc/boss-plugin-agent-hq`. Without that access,
+clone this umbrella repository without `--recurse-submodules` and initialize only
+the plugins you can access with `git submodule update --init <plugin-name>`.
+
+To build Agent HQ locally, download `boss-plugin-api-1.0.78.jar` from the
+[API 1.0.78 release](https://github.com/risa-labs-inc/boss-plugin-api/releases/tag/v1.0.78)
+and place it in
+`boss-plugin-api/build/libs/`, as required by its build configuration. The API
+source revision currently pinned by this umbrella repository is 1.0.74; building
+that revision alone does not supply the version Agent HQ needs.
+
 ```bash
 # Clone with all plugins
 git clone --recurse-submodules https://github.com/risa-labs-inc/boss-plugins.git
@@ -29,6 +41,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | Plugin | Description |
 |--------|-------------|
 | [admin-role-management](admin-role-management/) | Assign roles to users; the people half of RBAC |
+| [agent-hq](agent-hq/) | Named specialised agents with direct messages, channels and handoffs |
 | [analytics](analytics/) | Vendor-neutral product analytics pipeline (PostHog backend, pluggable sinks, consent + PII scrubbing) |
 | [bookmarks](bookmarks/) | Bookmarks |
 | [boss-microkernel-runtime](boss-microkernel-runtime/) | Shared runtime for out-of-process plugin child JVMs; not itself a plugin |
