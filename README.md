@@ -55,6 +55,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [rpaengine](rpaengine/) | Replay recorded browser workflows against a live tab |
 | [rparecorder](rparecorder/) | Record browser interactions into replayable workflows |
 | [run-configurations](run-configurations/) | Auto-detected ways to run the open project, grouped by language |
+| [run-ledger](run-ledger/) | Records what produced each result: the command, the commit, the uncommitted diff, and the output files, rescued out of scratch directories. Answers the same question to agents through `run_ledger_*` MCP tools |
 | [secret-manager](secret-manager/) | Encrypted credentials, secrets shared with you, Plugin Store API keys, and all AI provider settings |
 | [terminal](terminal/) | Sidebar panel that embeds the terminal-tab plugin's terminal |
 | [terminal-tab](terminal-tab/) | Terminal tab |
