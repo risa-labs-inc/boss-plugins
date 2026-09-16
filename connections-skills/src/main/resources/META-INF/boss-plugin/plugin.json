@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "pluginId": "ai.rever.boss.plugin.dynamic.connectionskills",
+  "displayName": "Connections & Skills",
+  "version": "0.1.0",
+  "apiVersion": "1.0.74",
+  "minBossVersion": "9.5.0",
+  "mainClass": "ai.rever.boss.plugin.dynamic.connectionskills.ConnectionsSkillsDynamicPlugin",
+  "type": "panel",
+  "description": "Unified catalogue and governed access layer for external service connections and version-pinned skills, starting with GitHub and Google Sheets.",
+  "author": "TechTribe",
+  "url": "https://github.com/risa-labs-inc/boss-plugins/tree/main/connections-skills",
+  "isolationMode": "out-of-process",
+  "fallback": "in-process"
+}
