@@ -56,6 +56,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [rparecorder](rparecorder/) | Record browser interactions into replayable workflows |
 | [run-configurations](run-configurations/) | Auto-detected ways to run the open project, grouped by language |
 | [secret-manager](secret-manager/) | Encrypted credentials, secrets shared with you, Plugin Store API keys, and all AI provider settings |
+| [session-recap](session-recap/) | End-of-session summary - tab opens, project switches, MCP calls, file activity and agent notes combined into a readable recap |
 | [terminal](terminal/) | Sidebar panel that embeds the terminal-tab plugin's terminal |
 | [terminal-tab](terminal-tab/) | Terminal tab |
 | [tool-evolver](tool-evolver/) | Evolve installed tools with AI CLIs (hot reload + PR); probe memory/leaks/logs |
