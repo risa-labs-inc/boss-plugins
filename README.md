@@ -49,6 +49,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [llmrpa](llmrpa/) | Draft RPA actions from a plain-language instruction via an LLM |
 | [organisation](organisation/) | Organisation membership, roles and discovery; opens the org web pages |
 | [performance](performance/) | Live JVM telemetry: heap, CPU, GC, threads, network and per-plugin memory |
+| [plugin-config-editor](plugin-config-editor/) | Centralized UI for editing every loaded plugin's settings in one view |
 | [plugin-manager](plugin-manager/) | Toolbox: the plugin store client - install, update, MCP tool toggles, publish |
 | [risa-pam-button](risa-pam-button/) | Opens risalabs.ai when the hFAM Boss physical button (Arduino) is pressed |
 | [role-creation](role-creation/) | Define roles and permissions; the authoring half of RBAC |

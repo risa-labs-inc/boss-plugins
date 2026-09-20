@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "plugin-config-editor"]
+	path = plugin-config-editor
+	url = https://github.com/choksi2212/boss-plugin-plugin-config-editor.git
