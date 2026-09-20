@@ -40,6 +40,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [docker](docker/) | Local Docker manager - containers, images, volumes, networks, project Dockerfiles/compose, with live logs and service previews |
 | [downloads](downloads/) | Active and completed downloads: progress, speed, pause/resume/reveal |
 | [editor-tab](editor-tab/) | Editor tab |
+| [env-inspector](env-inspector/) | Side panel listing every BOSS environment variable, system property and runtime setting - secrets masked by default |
 | [fluck-agent](fluck-agent/) | Fluck Agent - chat with Claude about the adjacent browser page |
 | [fluck-browser](fluck-browser/) | Fluck browser |
 | [fluck-chatgpt](fluck-chatgpt/) | chatgpt.com in a sidebar panel, with a navigation toolbar |
