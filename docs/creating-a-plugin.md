@@ -130,7 +130,7 @@ panel manifest:
   "pluginId": "ai.rever.boss.plugin.dynamic.hello",
   "displayName": "Hello (Dynamic)",
   "version": "0.1.0",
-  "apiVersion": "1.0.20",
+  "apiVersion": "1.0.93",
   "minBossVersion": "8.16.30",
   "mainClass": "ai.rever.boss.plugin.dynamic.hello.HelloDynamicPlugin",
   "type": "panel",
@@ -161,7 +161,7 @@ val bossPluginApiPath = "../boss-plugin-api"
 
 dependencies {
     if (useLocalDependencies) {
-        compileOnly(files("$bossPluginApiPath/build/libs/boss-plugin-api-1.0.47.jar"))
+        compileOnly(files("$bossPluginApiPath/build/libs/boss-plugin-api-1.0.93.jar"))
     } else {
         compileOnly(files("build/downloaded-deps/boss-plugin-api.jar"))   // CI downloads it
     }

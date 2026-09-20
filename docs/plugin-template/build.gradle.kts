@@ -28,7 +28,7 @@ repositories {
 
 dependencies {
     if (useLocalDependencies) {
-        compileOnly(files("$bossPluginApiPath/build/libs/boss-plugin-api-1.0.47.jar"))
+        compileOnly(files("$bossPluginApiPath/build/libs/boss-plugin-api-1.0.93.jar"))
     } else {
         compileOnly(files("build/downloaded-deps/boss-plugin-api.jar"))
     }
