@@ -61,6 +61,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [tool-evolver](tool-evolver/) | Evolve installed tools with AI CLIs (hot reload + PR); probe memory/leaks/logs |
 | [topofmind](topofmind/) | Every open tab across all workspaces, as a split-aware tree |
 | [user-secret-list](user-secret-list/) | **Retired** - folded into secret-manager's "Shared with me" section; ships a notice panel only |
+| [xray](xray/) | Static, pre-load report of what a plugin JAR can do - reads META-INF/boss-plugin/plugin.json without loading classes |
 
 ## Working with Submodules
 
