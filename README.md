@@ -43,6 +43,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [fluck-agent](fluck-agent/) | Fluck Agent - chat with Claude about the adjacent browser page |
 | [fluck-browser](fluck-browser/) | Fluck browser |
 | [fluck-chatgpt](fluck-chatgpt/) | chatgpt.com in a sidebar panel, with a navigation toolbar |
+| [flow-bridge](flow-bridge/) | Bridges flow-tab, rparecorder, rpaengine and llmrpa into one coherent surface - recordings become graphs, drafts become runs |
 | [git-log](git-log/) | Commit history with cherry-pick, revert and checkout |
 | [git-status](git-status/) | Working tree and staging area; the reference example for plugin authors |
 | [kubernetes](kubernetes/) | Kubernetes cluster manager - workloads, pods, services, live logs, supervised port-forwards and inline service previews |
