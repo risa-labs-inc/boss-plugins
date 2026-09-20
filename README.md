@@ -47,6 +47,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [git-status](git-status/) | Working tree and staging area; the reference example for plugin authors |
 | [kubernetes](kubernetes/) | Kubernetes cluster manager - workloads, pods, services, live logs, supervised port-forwards and inline service previews |
 | [llmrpa](llmrpa/) | Draft RPA actions from a plain-language instruction via an LLM |
+| [mcp-tool-playground](mcp-tool-playground/) | Interactive MCP tool tester - pick any tool, edit args JSON, invoke it, see the result; useful for plugin development |
 | [organisation](organisation/) | Organisation membership, roles and discovery; opens the org web pages |
 | [performance](performance/) | Live JVM telemetry: heap, CPU, GC, threads, network and per-plugin memory |
 | [plugin-manager](plugin-manager/) | Toolbox: the plugin store client - install, update, MCP tool toggles, publish |
