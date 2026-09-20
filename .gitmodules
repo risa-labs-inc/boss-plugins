@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "llm-cost-tracker"]
+	path = llm-cost-tracker
+	url = https://github.com/choksi2212/boss-plugin-llm-cost-tracker.git
