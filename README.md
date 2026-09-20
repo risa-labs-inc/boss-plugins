@@ -45,6 +45,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [fluck-chatgpt](fluck-chatgpt/) | chatgpt.com in a sidebar panel, with a navigation toolbar |
 | [git-log](git-log/) | Commit history with cherry-pick, revert and checkout |
 | [git-status](git-status/) | Working tree and staging area; the reference example for plugin authors |
+| [keyboard-shortcut-explorer](keyboard-shortcut-explorer/) | Discover every keyboard shortcut available in BOSS - host + plugins, search by action or key, detect conflicts |
 | [kubernetes](kubernetes/) | Kubernetes cluster manager - workloads, pods, services, live logs, supervised port-forwards and inline service previews |
 | [llmrpa](llmrpa/) | Draft RPA actions from a plain-language instruction via an LLM |
 | [organisation](organisation/) | Organisation membership, roles and discovery; opens the org web pages |
