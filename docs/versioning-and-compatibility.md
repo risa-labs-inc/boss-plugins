@@ -49,7 +49,7 @@ or every plugin compiled against the old signature breaks.
 `build.gradle.kts` pins the api jar for local builds:
 
 ```kotlin
-compileOnly(files("$bossPluginApiPath/build/libs/boss-plugin-api-1.0.47.jar"))
+compileOnly(files("$bossPluginApiPath/build/libs/boss-plugin-api-1.0.93.jar"))
 ```
 
 - Pick a jar that **exists** in `../boss-plugin-api/build/libs/` (build it there, or use the version
