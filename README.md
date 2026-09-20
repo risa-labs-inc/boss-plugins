@@ -54,6 +54,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [role-creation](role-creation/) | Define roles and permissions; the authoring half of RBAC |
 | [rpaengine](rpaengine/) | Replay recorded browser workflows against a live tab |
 | [rparecorder](rparecorder/) | Record browser interactions into replayable workflows |
+| [run-ledger](run-ledger/) | Provenance ledger for MCP tool results - every artifact a tool produces (commit, file, URL, id) is indexed so 'what produced this?' is queryable |
 | [run-configurations](run-configurations/) | Auto-detected ways to run the open project, grouped by language |
 | [secret-manager](secret-manager/) | Encrypted credentials, secrets shared with you, Plugin Store API keys, and all AI provider settings |
 | [terminal](terminal/) | Sidebar panel that embeds the terminal-tab plugin's terminal |
