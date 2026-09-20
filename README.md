@@ -32,6 +32,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [analytics](analytics/) | Vendor-neutral product analytics pipeline (PostHog backend, pluggable sinks, consent + PII scrubbing) |
 | [bookmarks](bookmarks/) | Bookmarks |
 | [boss-microkernel-runtime](boss-microkernel-runtime/) | Shared runtime for out-of-process plugin child JVMs; not itself a plugin |
+| [clipboard-history](clipboard-history/) | Persistent clipboard ring buffer - the last 200 copied texts are searchable, pinnable, and one click away from being re-copied |
 | [boss-plugin-api](boss-plugin-api/) | The SDK every plugin compiles against, and the bundled system plugin that serves it |
 | [codebase](codebase/) | Project file tree: lazy loading, multi-select, context menu, background watcher |
 | [console](console/) | Captured stdout/stderr with source filtering, search and per-plugin attribution |
