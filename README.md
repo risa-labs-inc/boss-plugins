@@ -60,6 +60,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [terminal-tab](terminal-tab/) | Terminal tab |
 | [tool-evolver](tool-evolver/) | Evolve installed tools with AI CLIs (hot reload + PR); probe memory/leaks/logs |
 | [topofmind](topofmind/) | Every open tab across all workspaces, as a split-aware tree |
+| [workspace-snapshot-diff](workspace-snapshot-diff/) | Visual diff between two saved BOSS workspaces - panels added, removed, moved; tab count delta; split orientation change |
 | [user-secret-list](user-secret-list/) | **Retired** - folded into secret-manager's "Shared with me" section; ships a notice panel only |
 
 ## Working with Submodules

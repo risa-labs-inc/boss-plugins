@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "workspace-snapshot-diff"]
+	path = workspace-snapshot-diff
+	url = https://github.com/choksi2212/boss-plugin-workspace-snapshot-diff.git
