@@ -58,6 +58,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [secret-manager](secret-manager/) | Encrypted credentials, secrets shared with you, Plugin Store API keys, and all AI provider settings |
 | [terminal](terminal/) | Sidebar panel that embeds the terminal-tab plugin's terminal |
 | [terminal-tab](terminal-tab/) | Terminal tab |
+| [test-explorer](test-explorer/) | Structured JUnit XML viewer - parses test reports and renders them as a tree of suites, classes and methods with status, timings and error messages |
 | [tool-evolver](tool-evolver/) | Evolve installed tools with AI CLIs (hot reload + PR); probe memory/leaks/logs |
 | [topofmind](topofmind/) | Every open tab across all workspaces, as a split-aware tree |
 | [user-secret-list](user-secret-list/) | **Retired** - folded into secret-manager's "Shared with me" section; ships a notice panel only |

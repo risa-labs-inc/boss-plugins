@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "test-explorer"]
+	path = test-explorer
+	url = https://github.com/choksi2212/boss-plugin-test-explorer.git
