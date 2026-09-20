@@ -48,6 +48,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [kubernetes](kubernetes/) | Kubernetes cluster manager - workloads, pods, services, live logs, supervised port-forwards and inline service previews |
 | [llmrpa](llmrpa/) | Draft RPA actions from a plain-language instruction via an LLM |
 | [organisation](organisation/) | Organisation membership, roles and discovery; opens the org web pages |
+| [page-memory](page-memory/) | URL-keyed persistent memory for pages the user reads in BOSS - notes, tags, related URLs, and cross-plugin references |
 | [performance](performance/) | Live JVM telemetry: heap, CPU, GC, threads, network and per-plugin memory |
 | [plugin-manager](plugin-manager/) | Toolbox: the plugin store client - install, update, MCP tool toggles, publish |
 | [risa-pam-button](risa-pam-button/) | Opens risalabs.ai when the hFAM Boss physical button (Arduino) is pressed |

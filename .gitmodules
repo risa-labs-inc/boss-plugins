@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "page-memory"]
+	path = page-memory
+	url = https://github.com/choksi2212/boss-plugin-page-memory.git
