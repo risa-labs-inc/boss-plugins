@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "core-cs-lab"]
+	path = core-cs-lab
+	url = https://github.com/shineyrbl-byte/boss-plugin-core-cs-lab.git
