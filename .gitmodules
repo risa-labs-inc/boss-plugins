@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "blackout"]
+	path = blackout
+	url = https://github.com/Devx228/boss-plugin-blackout.git
