@@ -112,3 +112,6 @@
 [submodule "deepseek-harness"]
 	path = deepseek-harness
 	url = https://github.com/risa-labs-inc/boss-plugin-deepseek-harness.git
+[submodule "repository-intelligence"]
+	path = repository-intelligence
+	url = https://github.com/arnavsinghcs4-bit/boss-plugin-repo-intel.git
