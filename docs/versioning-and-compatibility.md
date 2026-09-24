@@ -1,8 +1,8 @@
 # Versioning & Compatibility
 
-Three independent checks decide whether the host loads your plugin: **API version**, **BOSS
-version**, and **binary compatibility**. A failure on any one disables the plugin (it won't load)
-and surfaces an error in the logs / crash registry. The checks live in
+Three manifest version gates apply to in-process plugins: **`apiVersion`**, **`minBossVersion`**,
+and **`minApiVersion`**. The host also checks **binary compatibility**. A failure on any one
+disables the plugin (it won't load) and surfaces an error in the logs / crash registry. The checks live in
 `plugin-loader/.../DynamicPluginLoader.kt` (+ `BinaryCompatibilityValidator.kt`, `Version.kt`).
 
 ## `apiVersion` (manifest)
@@ -12,10 +12,11 @@ The Plugin API version your code targets, e.g. `"1.0.20"`. The host compares it 
 
 > **Major must match exactly; the host's minor must be ≥ your required minor.**
 
-So `apiVersion 1.0.20` loads on a host at `1.0.20+` but not `1.0.18`; a `2.x` plugin never loads on a
-`1.x` host. Mismatch → `PluginApiVersionException` → plugin **disabled**. Set `apiVersion` to the
-lowest API minor that has the providers/symbols you use, so your plugin runs on the widest range of
-hosts.
+Patch versions are ignored: `apiVersion 1.0.20` passes this gate on a host at `1.0.18`, while
+`1.1.0` requires host API major 1 and minor 1 or later. A `2.x` plugin never loads on a `1.x` host.
+Mismatch → `PluginApiVersionException` → plugin **disabled**. Set `apiVersion` to the lowest API
+major/minor contract you require; use the other gates below for SDK-only and host-implemented
+capabilities.
 
 ## `minBossVersion` (manifest)
 
@@ -23,6 +24,36 @@ The minimum BOSS app version, semver e.g. `"8.16.30"`. The host loads you only i
 yours (`Version.parse` comparison; prerelease order `alpha < beta < rc < stable`). Mismatch →
 `PluginBossVersionException` → "requires newer BOSS". If either version string is malformed the
 check **fails open** (loads with a warning). Leave empty if you have no hard floor.
+
+<a id="which-version-gate"></a>
+
+## `minApiVersion` (manifest)
+
+The minimum **boss-plugin-api** version: not the host, but the runtime API layer the host resolves
+from the installed api jar. Empty skips the check. An unknown installed API version also skips
+the check with a warning. Unparseable versions fail open, like `minBossVersion`. Violation raises
+`PluginApiLevelException`, which exists to turn a
+"class not found" binary-compatibility failure into an actionable "requires API x.y.z, installed
+a.b.c".
+
+**This is a different gate from `apiVersion` above, and the difference decides which field a given
+requirement belongs in.** The api jar is updatable at runtime, independently of the host, so what
+ships through it and what does not is the whole question:
+
+| What you started using | Ships via | Gate with |
+|---|---|---|
+| A required API major/minor contract | the host API contract | `apiVersion` |
+| A brand-new interface, object or data class from the api jar | the api jar alone | `minApiVersion` |
+| A new member on an existing type the host implements | **not** the jar | `minBossVersion` |
+
+The host-implemented row is the trap. Types the host implements are marked `@HostImplemented`, and the host
+compiles in its own copy, which **shadows** the jar's newer one. A new provider on `PluginContext`
+is a member addition to a `@HostImplemented` type, so a newer api jar does not deliver it and
+`minApiVersion` will not gate it; the requirement is a host contract and belongs in
+`minBossVersion`.
+
+Using `minApiVersion` requires a host at least as new as the platform release that introduced the
+ApiClassLoader.
 
 ## `minIpcVersion` (out-of-process plugins only)
 
@@ -44,7 +75,9 @@ newer than the hosts you target. **Host-maintainer takeaway:** never change a pu
 (or other public) JVM signature in `plugin-ui-core`/`boss-plugin-api` in place — add an overload —
 or every plugin compiled against the old signature breaks.
 
-## Choosing the `boss-plugin-api` pin {#choosing-the-api-pin}
+<a id="choosing-the-api-pin"></a>
+
+## Choosing the `boss-plugin-api` pin
 
 `build.gradle.kts` pins the api jar for local builds:
 
@@ -54,10 +87,11 @@ compileOnly(files("$bossPluginApiPath/build/libs/boss-plugin-api-1.0.47.jar"))
 
 - Pick a jar that **exists** in `../boss-plugin-api/build/libs/` (build it there, or use the version
   CI resolves). A stale pin (file not present) makes the local build fail to resolve.
-- This is **compile-time only** — at runtime the host provides `boss-plugin-api`. So the pin governs
-  which symbols you can *compile* against; the manifest's `apiVersion` governs which hosts will
-  *load* you. Keep them consistent: compile against an api jar ≤ the host you declare via
-  `apiVersion`, and only use symbols present in that hosts' API.
+- This pin is **compile-time only**: it controls which symbols you can compile against. At runtime,
+  host-compiled types take precedence over the installed api jar. Set `apiVersion` for the required
+  API major/minor contract, `minApiVersion` for SDK-only additions, and `minBossVersion` for
+  host-implemented capabilities. A newer compile-time pin alone does not require raising all
+  three gates; declare the requirements of the symbols you actually use.
 - In CI, the workflow downloads `boss_plugin_api_version: 'latest'` (see [ci-cd.md](ci-cd.md)).
 
 ## Quick reference
@@ -66,6 +100,7 @@ compileOnly(files("$bossPluginApiPath/build/libs/boss-plugin-api-1.0.47.jar"))
 |---|---|---|
 | `apiVersion` | major ==, host minor ≥ yours | `PluginApiVersionException` → disabled |
 | `minBossVersion` | host ≥ yours (semver; fail-open if unparseable) | `PluginBossVersionException` → disabled |
+| `minApiVersion` | installed api jar ≥ yours (fail-open if unknown or unparseable) | `PluginApiLevelException` → disabled |
 | `minIpcVersion` (OOP) | host IPC major ==, host ≥ yours | not spawned |
 | binary compat | all referenced `ai.rever.boss.plugin.*` symbols resolve | `PluginBinaryIncompatibilityException` → disabled |
 
