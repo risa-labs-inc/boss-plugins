@@ -1,0 +1,276 @@
+[versions]
+# Updated for Gradle 9.2 compatibility
+agp = "8.13.0"
+android-compileSdk = "35"
+android-minSdk = "24"
+android-targetSdk = "34"
+androidx-activityCompose = "1.10.1"
+androidx-lifecycle = "2.11.0"
+compose-multiplatform = "1.12.0"
+compose-icons = "1.1.1"
+decompose = "3.5.0"
+detekt = "1.23.8"
+essenty = "2.6.0"
+junit-jupiter = "6.1.3"
+clikt = "5.1.0"
+kotlin = "2.4.10"
+kotlinx-coroutines = "1.11.0"
+ktlint-gradle = "14.2.0"
+kotlinx-datetime = "0.8.0-0.6.x-compat"
+# kotlinx-serialization is a SHARED, parent-first package for plugins
+# (PluginClassLoader.defaultSharedPackages): this line is the version every
+# plugin gets at runtime no matter what it bundles — terminal-tab, for one,
+# bundles ktor + the MCP Kotlin SDK and ships zero kotlinx.serialization classes
+# of its own. A bump here is a cross-repo change; re-check the plugins riding on
+# it rather than trusting a comment. (History of the 1.9.0 -> 1.11.0 move and
+# how it was re-verified: PR #57.)
+kotlinx-serialization = "1.11.0"
+# ktor is NOT shared with plugins (no io.ktor prefix in defaultSharedPackages),
+# so a plugin's bundled ktor is unaffected by this pin; it constrains the host's
+# own client stack only. The one mechanism that could change that is a plugin
+# opting in via manifest sharedPackages — checked across boss_plugins, and the
+# only manifest declaring any is boss-plugin-api, for its own package. If a
+# plugin ever declares io.ktor, this pin becomes a cross-repo change.
+#
+# 3.5.0 arrived as an automated bump (#736) and was reverted, citing plugin
+# compatibility with no host-side diagnosis recorded — which the isolation above
+# says cannot have been the reason. 3.5.1 was retried in #113 and landed clean
+# (build-test green on all three OSes); nothing broke, so that revert should not
+# be read as a standing objection to 3.5.x.
+#
+# This pin is COUPLED to `supabase`: supabase-kt depends on ktor directly
+# (3.6.0 -> 3.4.3, 3.7.0 -> 3.5.1). Bump the two together. Taking a supabase
+# bump alone leaves the host's direct ktor deps on the old version while
+# ktor-server-core/cio resolve forward transitively, which is how you end up
+# with mixed ktor artifacts on one classpath. Check what the supabase Gradle
+# module metadata requires before moving either line.
+ktor = "3.5.2"
+logback = "1.6.3"
+precompose = "1.6.2"
+slf4j = "2.0.18"
+re2j = "1.8"
+supabase = "3.8.0"
+zxing = "3.5.4"
+jxbrowser = "9.5.0"
+jxbrowser-gradle-plugin = "2.1.0"
+maven-publish = "0.37.0"
+jna = "5.19.1"
+bouncycastle = "1.85"
+# Reads the SQLite databases browsers keep their bookmarks and logins in
+# (Chromium "Login Data", Firefox places.sqlite / key4.db). Desktop-only.
+sqlite-jdbc = "3.53.4.0"
+# gRPC + Protobuf for IPC
+grpc = "1.84.0"
+grpc-kotlin = "1.5.0"
+protobuf = "4.36.1"
+protobuf-gradle-plugin = "0.10.0"
+graalvm-native-plugin = "1.1.12"
+# IntelliJ PSI for code navigation
+intellij-platform = "243.21565.199"
+# The plugin API contract (risa-labs-inc/boss-plugin-api releases). This pin
+# is the single source of truth for which API level the host implements —
+# bump it when consuming a new SDK release. Distribution is store/GitHub-
+# releases ONLY: plugin-platform/plugin-api-core downloads this release's jar and
+# filters the api package locally (no Maven registry involved).
+#
+# 1.0.79 adds PluginLoaderDelegate.unloadPluginForIntent + getDependentPlugins and the
+# PluginUnloadIntent / PluginUnloadResult / DependentPluginInfo types - what
+# PluginLoaderDelegateImpl on this branch implements so a plugin whose dependents are
+# loaded can be updated after a prompt instead of being refused outright.
+#
+# PluginLoaderDelegate is @HostImplemented: plugin-api-core filters it into the host and
+# serves it parent-first, so THIS pin is what every plugin resolves. Nothing a
+# plugin declares can reach these members before this bump lands in a release -
+# minApiVersion cannot, which is why the api documents them as a minBossVersion gate
+# and tells callers to catch LinkageError.
+#
+# It is a SUPERSET of the 1.0.77 it replaces: 1.0.79 is cut from the api repo's main at
+# the 1.0.78 bump, so it keeps #33's SplitViewOperations.openPanelAsTab (the reason for
+# the 1.0.77 pin) and #34's AiCliSessionAPI along with everything below them. Worth
+# checking rather than trusting the ordering: fetchApiPluginJar has no Maven fallback, so
+# a pin that dropped a type would surface as an unrelated compile error, and this comment
+# is the only record of which api PR a pin corresponds to.
+#
+# 1.0.83 carries BrowserHandle.setPageEventScript + PAGE_EVENT_BRIDGE, which this release
+# implements (BrowserHandleImpl, via BrowserInjectDispatcher).
+#
+# The pin is NOT what makes that method compile here: `ai.rever.boss.plugin.browser` is a host
+# source mirror under plugin-api-browser, and only `ai.rever.boss.plugin.api` is filtered out of the
+# pinned jar. The bump is needed because fluck-browser declares `minApiVersion: 1.0.83`, and
+# DynamicPluginLoader hard-fails a plugin whose minApiVersion exceeds the api layer the host serves
+# (PluginApiLevelException) - so without this the plugin carrying the feature would not load at all.
+#
+# 1.0.83, not 1.0.82, and the difference is easy to get wrong: the api release workflow bump-pushes
+# the version BEFORE building, so the number in that repo's build.gradle.kts is the one already
+# published and a merge cuts the next. boss-plugin-api#39 therefore releases as v1.0.83. **This pin
+# 404s CI until that release exists** (fetchApiPluginJar has no Maven fallback), which is the forced
+# order: api first, then this.
+#
+# Superset of 1.0.80: 1.0.81 made fillCredentials a deprecated no-op (the host already stopped
+# implementing it in #215) and 1.0.82 was doc-only, so nothing a host module or an installed plugin
+# resolves has been withdrawn.
+#
+# 1.0.84 adds LoadedPluginInfo.sourceUrl, which PluginLoaderDelegateImpl on this branch fills from
+# PluginPersistence. Without it the only location a plugin can see is the manifest homepage, and the
+# Toolbox was reading that as a download source - which sent every store plugin's update to an
+# unauthenticated GitHub API call and 404d for every private repo. Same forced order as above: api
+# first (boss-plugin-api#40 cuts v1.0.84), then this, **and this pin 404s CI until that release
+# exists**.
+#
+# Superset of 1.0.83: the field is additive with a "" default and nothing was withdrawn.
+#
+# 1.0.85 adds DownloadCenterProvider and PluginContext.downloadCenterProvider, the one place
+# every in-flight transfer is reported so the bottom bar can show all of them. The host needs it
+# to hand the Toolbox a center to report into: before it, the only visible download progress was
+# a status-bar widget that plugin owned, so every download the host started ran silently. Same
+# forced order as above: api first, then this, **and this pin 404s CI until that release exists**.
+#
+# Superset of 1.0.84: both additions are new declarations with a null default on PluginContext,
+# so nothing a host module or an installed plugin resolves has been withdrawn.
+#
+# 1.0.87 adds the IDE-features batch, as ONE release: GitDataProvider diff members
+# (diffFile/diffRef/diffBetween/diffNames/openDiff + GitDiffData/DiffHunk/DiffLine),
+# the graph members (logGraph/logGraphFor/branches + GitCommitNodeData/GitBranchRefData),
+# the remote actions (fetch/pull/push), the EditorTabPluginAPI buffer section
+# (readBuffer/applyEdit/observeChanges/focusedDocument/openEditor/openSplit),
+# ProjectSearchProvider + PluginContext.projectSearchProvider, DiffTabConfig (so the
+# diff renderer can live in editor-tab, where BossEditor is), the deprecated no-op
+# legacy EditorContentProvider methods, and AiRequest.modelOverride (body-level getter
+# over extras, no constructor change). All additive with default bodies.
+#
+# The surface was developed across four working versions (.87/.88/.89/.90) and
+# collapsed back to a single release before publishing, per the plan's R8 rule - one
+# release means one number for every consumer to pin and no manifest drift.
+#
+# The host implements the new members in this branch: UnifiedDiffParser + git diff
+# plumbing, the diff/composer tab types, the editor buffer API, and
+# ContentSearchService. Same forced order as above: api first, then this.
+#
+# 1.0.88 adds the terminal-tab surface, as ONE release (boss-plugin-api#50, which
+# consolidated #47/#48/#49 so this pin moves once rather than three times):
+# initialCommand overloads on splitVertical/splitHorizontal, renameTab, and
+# tabActivity/tabActivityFlow/sendCommand/sendInterrupt on TerminalTabPluginAPI.
+#
+# Superset of 1.0.87, and nothing here is for the host to implement. The host only
+# CONSUMES this interface, through TerminalAPIAccess.getProvider(); terminal-tab is the
+# implementor. Every addition also carries a default body, so no existing implementor
+# gains an abstract member. The host needs the bump only so a plugin calling these
+# resolves them against the api the host loads, rather than finding them absent.
+#
+# 1.0.90 adds the tab-transfer surface (boss-plugin-api#44): eight defaulted members on
+# ActiveTabsProvider - supportsTabTransfer, liveWorkspaceIds, moveTabToWorkspace, moveTabToPane,
+# activePanelId, selectedTabId, allWindowTabs, refreshAllWindowTabs - plus BossColors.accentText.
+# This branch implements them in SplitViewState. A window RUNS several workspaces at once and shows
+# one, so activeTabs has always reported tabs from workspaces that are not on screen - but every
+# write path (findPanel, getAllPanels, selectTabInPanel) read the current tree only, so nothing
+# could act on them.
+#
+# Superset of 1.0.89: defaulted members on an existing interface and one new colour, nothing
+# withdrawn. Same forced order as above: api first, then this.
+#
+# **This number has now been wrong TWICE.** It said 1.0.88 while #44 sat unmerged and #50 took
+# 1.0.88; it then said 1.0.89 and an unrelated release took that on 2026-09-10. Verified against
+# the published jar rather than assumed: v1.0.89 carries none of the eight members. api release CI
+# bump-pushes before building, so api main's version IS the version already released and the next
+# merge cuts version + 1 - re-read it when #44 actually merges, because anything landing first
+# moves this and the topofmind pin again.
+boss-plugin-api = "1.0.93"
+
+[libraries]
+bouncycastle-pkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastle" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+# Runs the JUnit 4 rules Compose UI testing is built on (createComposeRule) on the
+# JUnit Platform, alongside Jupiter. Versioned with junit-jupiter: both come out of
+# the same JUnit release train.
+junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit-jupiter" }
+clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
+ktor-server-tests = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+decompose-extensions-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
+decompose-extensions-compose-experimental = { module = "com.arkivanov.decompose:extensions-compose-experimental", version.ref = "decompose" }
+essenty-back-handler = { module = "com.arkivanov.essenty:back-handler", version.ref = "essenty" }
+essenty-instance-keeper = { module = "com.arkivanov.essenty:instance-keeper", version.ref = "essenty" }
+essenty-lifecycle = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
+essenty-state-keeper = { module = "com.arkivanov.essenty:state-keeper", version.ref = "essenty" }
+precompose = { module = "moe.tlaster:precompose", version.ref = "precompose" }
+#precompose-molecule = { module = "moe.tlaster:precompose-molecule", version.ref = "precompose" }
+precompose-viewmodel = { module = "moe.tlaster:precompose-viewmodel", version.ref = "precompose" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+compose-icons-feather = { module = "br.com.devsrsouza.compose.icons:feather", version.ref = "compose-icons" }
+compose-icons-simpleicons = { module = "br.com.devsrsouza.compose.icons:simple-icons", version.ref = "compose-icons" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+supabase-bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "supabase" }
+supabase-postgrest = { module = "io.github.jan-tennert.supabase:postgrest-kt", version.ref = "supabase" }
+supabase-auth = { module = "io.github.jan-tennert.supabase:auth-kt", version.ref = "supabase" }
+supabase-realtime = { module = "io.github.jan-tennert.supabase:realtime-kt", version.ref = "supabase" }
+supabase-storage = { module = "io.github.jan-tennert.supabase:storage-kt", version.ref = "supabase" }
+supabase-functions = { module = "io.github.jan-tennert.supabase:functions-kt", version.ref = "supabase" }
+sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlite-jdbc" }
+zxing-core = { module = "com.google.zxing:core", version.ref = "zxing" }
+zxing-javase = { module = "com.google.zxing:javase", version.ref = "zxing" }
+jna = { module = "net.java.dev.jna:jna", version.ref = "jna" }
+jna-platform = { module = "net.java.dev.jna:jna-platform", version.ref = "jna" }
+# Compose Multiplatform dependencies (replacing deprecated compose.* accessors)
+# Note: material3 and material-icons-extended don't have base KMP artifacts, must use compose.* accessors
+compose-mp-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose-multiplatform" }
+compose-mp-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-multiplatform" }
+compose-mp-material = { module = "org.jetbrains.compose.material:material", version.ref = "compose-multiplatform" }
+compose-mp-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose-multiplatform" }
+compose-mp-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose-multiplatform" }
+compose-mp-components-ui-tooling-preview = { module = "org.jetbrains.compose.components:components-ui-tooling-preview", version.ref = "compose-multiplatform" }
+
+# gRPC + Protobuf IPC dependencies
+grpc-netty = { module = "io.grpc:grpc-netty", version.ref = "grpc" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
+grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
+grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin" }
+grpc-services = { module = "io.grpc:grpc-services", version.ref = "grpc" }
+# MutableHandlerRegistry — lets BossIpcServer register a service on a running
+# server without rebuilding it (which would kill every in-flight streaming RPC).
+grpc-util = { module = "io.grpc:grpc-util", version.ref = "grpc" }
+protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobuf" }
+protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
+# Netty transport for Unix domain sockets
+netty-transport-native-epoll = { module = "io.netty:netty-transport-native-epoll", version = "4.2.17.Final" }
+netty-transport-native-kqueue = { module = "io.netty:netty-transport-native-kqueue", version = "4.2.17.Final" }
+netty-transport-native-unix-common = { module = "io.netty:netty-transport-native-unix-common", version = "4.2.17.Final" }
+
+# K1 PSI dependencies for code navigation
+intellij-platform-core = { module = "com.jetbrains.intellij.platform:core", version.ref = "intellij-platform" }
+intellij-platform-core-impl = { module = "com.jetbrains.intellij.platform:core-impl", version.ref = "intellij-platform" }
+intellij-java-psi = { module = "com.jetbrains.intellij.java:java-psi", version.ref = "intellij-platform" }
+intellij-java-psi-impl = { module = "com.jetbrains.intellij.java:java-psi-impl", version.ref = "intellij-platform" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-gradle" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jxbrowser = { id = "com.teamdev.jxbrowser", version.ref = "jxbrowser-gradle-plugin" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobuf-gradle-plugin" }
+graalvmNative = { id = "org.graalvm.buildtools.native", version.ref = "graalvm-native-plugin" }

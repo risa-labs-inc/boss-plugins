@@ -1,0 +1,22 @@
+{
+  "pluginId": "com.hackathon.boss.docker",
+  "displayName": "Boss Docker Tools",
+  "version": "0.1.0",
+  "description": "Provides Docker MCP tools for the Fluck AI agent to list and inspect local containers.",
+  "author": "Boss Developer",
+  "apiVersion": "1.0.88",
+  "mainClass": "com.example.dockerplugin.DockerPlugin",
+  "requiredPermissions": [],
+  "mcpTools": [
+    {
+      "name": "mcp__com_hackathon_docker__list_containers",
+      "description": "Lists all running and stopped Docker containers on the local machine.",
+      "adminOnly": false
+    },
+    {
+      "name": "mcp__com_hackathon_docker__get_logs",
+      "description": "Gets the recent logs for a specific Docker container.",
+      "adminOnly": false
+    }
+  ]
+}
