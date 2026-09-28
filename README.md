@@ -45,6 +45,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [fluck-chatgpt](fluck-chatgpt/) | chatgpt.com in a sidebar panel, with a navigation toolbar |
 | [git-log](git-log/) | Commit history with cherry-pick, revert and checkout |
 | [git-status](git-status/) | Working tree and staging area; the reference example for plugin authors |
+| [jev](jev/) | Ask a decision model yes/no, choice and score questions from a sidebar panel or over MCP (jev_decide, jev_validate, jev_presets) |
 | [kubernetes](kubernetes/) | Kubernetes cluster manager - workloads, pods, services, live logs, supervised port-forwards and inline service previews |
 | [llmrpa](llmrpa/) | Draft RPA actions from a plain-language instruction via an LLM |
 | [organisation](organisation/) | Organisation membership, roles and discovery; opens the org web pages |
