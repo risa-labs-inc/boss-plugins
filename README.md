@@ -2,7 +2,7 @@
 
 Master repository for all BOSS (Business Operating System Service) plugins, managed as git submodules.
 
-**Building a plugin?** Read the [Plugin Development Guide](PLUGIN_DEVELOPMENT.md) - the exhaustive reference for the `plugin.json` manifest schema, validation and classloading, the `PluginContext` API surface, MCP tools, permissions/RBAC, local development, and the CI/CD release pipeline.
+**Building a plugin?** Start with [Tool Creator, a coding agent, and GitHub publishing](docs/create-and-publish.md). The [Plugin Development Guide](PLUGIN_DEVELOPMENT.md) covers the manifest, API, MCP tools, permissions, and release internals.
 
 ## Quick Start
 
@@ -18,7 +18,7 @@ git submodule update --init --recursive
 
 New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 
-- **[Creating a plugin](docs/creating-a-plugin.md)** - repo setup → scaffold → build → local test → release
+- **[Create and publish](docs/create-and-publish.md)** - Tool Creator → coding agent → GitHub → Plugin Store; [manual setup](docs/creating-a-plugin.md)
 - **[Plugin API](docs/plugin-api.md)** - the interfaces you implement and the host services you consume
 - **[Manifest reference](docs/manifest.md)** - every `plugin.json` field
 - **[Themes](docs/themes.md)** · **[Permissions](docs/permissions.md)** · **[Versioning & compatibility](docs/versioning-and-compatibility.md)** · **[CI/CD](docs/ci-cd.md)**
@@ -59,6 +59,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [secret-manager](secret-manager/) | Encrypted credentials, secrets shared with you, Plugin Store API keys, and all AI provider settings |
 | [terminal](terminal/) | Sidebar panel that embeds the terminal-tab plugin's terminal |
 | [terminal-tab](terminal-tab/) | Terminal tab |
+| [tool-creator](tool-creator/) | Scaffold a plugin, start a coding agent, and set up GitHub release publishing |
 | [tool-evolver](tool-evolver/) | Evolve installed tools with AI CLIs (hot reload + PR); probe memory/leaks/logs |
 | [topofmind](topofmind/) | Every open tab across all workspaces, as a split-aware tree |
 | [user-secret-list](user-secret-list/) | **Retired** - folded into secret-manager's "Shared with me" section; ships a notice panel only |
