@@ -1,7 +1,9 @@
 # CI/CD & Releasing
 
 Every plugin repo ships a tiny workflow that delegates to a shared, reusable release pipeline.
-Pushing to `main` builds, releases, and publishes the plugin to the BOSS Plugin Store.
+Code changes pushed to `main` build, release, and publish to the BOSS Plugin Store;
+documentation-only pushes skip releasing. For first-time setup, follow
+[Tool Creator → agent → GitHub → store](create-and-publish.md).
 
 ## The workflow
 
@@ -25,21 +27,20 @@ jobs:
 The reusable workflow (`risa-labs-inc/BossConsole-Releases/.github/workflows/plugin-release.yml@main`)
 does the heavy lifting:
 
-1. Downloads the `boss-plugin-api` JAR (`latest`) for the `compileOnly` dependency (CI sets
+1. Bumps the version in `build.gradle.kts` and pushes a `[skip ci]` commit.
+2. Downloads the `boss-plugin-api` JAR (`latest`) for the `compileOnly` dependency (CI sets
    `CI=true`, so `build.gradle.kts` uses `build/downloaded-deps/boss-plugin-api.jar`).
-2. Builds the plugin: `./gradlew buildPluginJar` → `build/libs/boss-plugin-<name>-<version>.jar`.
-3. Creates a **GitHub release**.
-4. Publishes to the **BOSS Plugin Store** (authenticated with `BOSS_STORE_PLUGIN_PUBLISH_KEY`),
+3. Runs `./gradlew build`, including the distributable `buildPluginJar` task.
+4. Creates a **GitHub release**.
+5. Publishes to the **BOSS Plugin Store** (authenticated with `BOSS_STORE_PLUGIN_PUBLISH_KEY`),
    including the manifest's `requiredPermissions` so the store can gate installs (see
    [permissions.md](permissions.md)).
-5. A release bot bumps the patch version with a `[skip ci]` commit (so the bump itself doesn't
-   re-trigger a release).
 
 ## Versioning
 
 `version` in `build.gradle.kts` is the **single source of truth**; `processResources` syncs it into
 `plugin.json` at build time (never hand-edit the manifest version). The release bot's `[skip ci]`
-bump means `main` moves one patch ahead right after a release.
+bump happens before the build, so `main` advances as the release starts.
 
 ```bash
 # Cut a release:

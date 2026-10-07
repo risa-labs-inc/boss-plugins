@@ -8,7 +8,7 @@ itself in a `plugin.json` manifest, and renders Compose UI inside the host windo
 
 ## Read in this order
 
-1. **[Creating a plugin](creating-a-plugin.md)** — repo setup → scaffold → build → local test → release. Start here.
+1. **[Create and publish](create-and-publish.md)** — Tool Creator → coding agent → GitHub → Plugin Store. Start here; [Creating a plugin](creating-a-plugin.md) covers manual setup and implementation.
 2. **[Plugin API](plugin-api.md)** — the interfaces you implement and the host services (`PluginContext`) you consume.
 3. **[Manifest reference](manifest.md)** — every `plugin.json` field.
 4. **[Themes](themes.md)** — the theme tokens and components; how your panel re-skins with the host.
@@ -18,8 +18,8 @@ itself in a `plugin.json` manifest, and renders Compose UI inside the host windo
 
 ## Quickstart
 
-Copy **[`plugin-template/`](plugin-template/)** (a build-ready "Hello panel"), rename `hello` →
-your plugin name, and follow [Creating a plugin](creating-a-plugin.md).
+Open **Toolbox → Create → Tool Creator** and follow [Create and publish](create-and-publish.md).
+For manual scaffolding, copy **[`plugin-template/`](plugin-template/)** and rename `hello` → your plugin name.
 
 ## Conventions (apply to every plugin)
 

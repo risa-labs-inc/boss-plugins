@@ -5,9 +5,9 @@ implements the `DynamicPlugin` entry point, registers one or more **panels** (si
 and/or **tab types**, and renders Compose UI. This guide takes you from an empty repo to a loaded,
 themed plugin.
 
-> The fastest start is to copy **[`plugin-template/`](plugin-template/)** and rename `hello` → your
-> plugin. The walkthrough below explains each piece. The `git-status` plugin in this repo is the
-> canonical real example to crib from.
+> Start with **[Create and publish with Tool Creator, an agent, and GitHub](create-and-publish.md)**.
+> For manual setup, copy **[`plugin-template/`](plugin-template/)** and rename `hello` → your plugin.
+> The walkthrough below explains each piece; `git-status` is the canonical real example.
 
 ## 1. Plugin types
 

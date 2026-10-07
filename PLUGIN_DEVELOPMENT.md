@@ -22,6 +22,8 @@ follows the code and flags the discrepancy.
 [New-plugin checklist](#14-checklist-creating-a-new-plugin) ·
 [Gotchas](#15-known-quirks-and-gotchas)
 
+For the user workflow, start with [Create and publish with Tool Creator, a coding agent, and GitHub](docs/create-and-publish.md).
+
 ---
 
 ## 1. How the pieces fit
