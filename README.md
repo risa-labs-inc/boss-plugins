@@ -56,6 +56,7 @@ New to building BOSS plugins? Start with the **[plugin authoring docs](docs/)**:
 | [rpaengine](rpaengine/) | Replay recorded browser workflows against a live tab |
 | [rparecorder](rparecorder/) | Record browser interactions into replayable workflows |
 | [run-configurations](run-configurations/) | Auto-detected ways to run the open project, grouped by language |
+| [scheduler](scheduler/) | Installs and starts Boss Scheduler (boss-sched), the always-on job scheduler that keeps running when BOSS is closed; jobs, run history and scheduler_* tools |
 | [secret-manager](secret-manager/) | Encrypted credentials, secrets shared with you, Plugin Store API keys, and all AI provider settings |
 | [terminal](terminal/) | Sidebar panel that embeds the terminal-tab plugin's terminal |
 | [terminal-tab](terminal-tab/) | Terminal tab |
