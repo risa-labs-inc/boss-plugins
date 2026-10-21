@@ -24,6 +24,7 @@ decide whether/where/how to load your plugin. The canonical schema is `PluginMan
 | `author` | string | no | `""` | Author/org. |
 | `url` | string | no | `""` | Homepage/repo. |
 | `minBossVersion` | string | no | `""` | Minimum BOSS version (semver). Host refuses older. Empty = no floor. |
+| `minApiVersion` | string | no | `""` | Minimum **boss-plugin-api** version, i.e. the runtime API layer resolved from the installed api jar. Empty skips the check. Not the same gate as `apiVersion`: see [versioning](versioning-and-compatibility.md#which-version-gate). |
 | `dependencies` | list | no | `[]` | Other plugins required: `{pluginId, version ("*"/range), optional}`. |
 | `sharedPackages` | list | no | `[]` | Packages this plugin shares with the host classloader (system plugins). |
 | `isDynamic` | bool | no | `true` | Supports dynamic load/unload. |
